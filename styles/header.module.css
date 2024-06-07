@@ -1,0 +1,10 @@
+.header{
+    width: 100%;
+    padding: 15px 5%;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.logo{
+    width: 112px;
+}
