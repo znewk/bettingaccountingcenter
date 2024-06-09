@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 interface PrivateRouteProps {
   children: React.ReactNode;
@@ -16,8 +16,10 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, requiredRoles }) 
   const router = useRouter();
 
   useEffect(() => {
+    console.log('token', token)
+    console.log('userRoles', userRoles)
     if (!token) {
-      router.push('/login');
+      router.push('/auth/login');
     } else if (!checkRoles(userRoles, requiredRoles)) {
       router.push('/unauthorized'); // Перенаправление на страницу с сообщением о запрете доступа
     }
@@ -32,25 +34,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, requiredRoles }) 
 
 // Функция для проверки наличия всех необходимых ролей у пользователя
 const checkRoles = (userRoles: string[], requiredRoles: string[]): boolean => {
-  return requiredRoles.every(role => userRoles.includes(role));
+  return requiredRoles.some(role => userRoles.includes(role));
 };
 
 export default PrivateRoute;
-
-
-// how to use template
-// import React from 'react';
-// import PrivateRoute from '../../components/PrivateRoute';
-
-// const Dashboard: React.FC = () => {
-//   return (
-//     <PrivateRoute requiredRoles={['admin', 'manager']}>
-//       <div>
-//         <h1>Dashboard</h1>
-//         <p>Welcome to the dashboard!</p>
-//       </div>
-//     </PrivateRoute>
-//   );
-// };
-
-// export default Dashboard;

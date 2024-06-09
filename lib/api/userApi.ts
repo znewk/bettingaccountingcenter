@@ -1,8 +1,9 @@
+import { LoginPayload, UserResponse } from '@/schemas/user';
 import { BaseApi } from './BaseApi';
 
 class UserApi extends BaseApi {
-  login(user: string) {
-    return this.axios.post<string>('/api/auth/login', user);
+  login(creds: LoginPayload) {
+    return this.axios.post<UserResponse>('/api/auth/login', creds);
   }
 
 //   async getUsers() {

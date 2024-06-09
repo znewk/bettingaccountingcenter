@@ -1,0 +1,35 @@
+.header{
+    width: 100%;
+    padding: 30px 5%;
+    box-sizing: border-box;
+    background-color: #F8F9FA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+}
+
+.titleBlock{
+    display: flex;
+    align-items: center;
+}
+
+.title1{
+    color: #A0AEC0;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.userItem{
+    display: flex;
+    align-items: center;
+    font-family: "Mulish Bold";
+}
+
+.linkBody{
+    margin-left: 15px;
+}

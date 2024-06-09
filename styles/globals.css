@@ -39,10 +39,25 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  font-family: 'Mulish Regular';
+  font-family: 'Mulish Regular' !important;
   margin: 0;
   color: #233348;
 }
+
+body > * {
+  font-family: 'Mulish Regular' !important;
+  color: #233348;
+}
+
+.link{
+  color: #233348;
+  text-decoration: none;
+}
+
+
+/* .p-password-input{
+  width: 100%;
+} */
 
 /* @layer utilities {
   .text-balance {
