@@ -9,6 +9,7 @@ import { Button } from 'primereact/button';
 import Logo from '../Logo';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { menuItems } from './data';
 
 const CabinetHeader: React.FC<{title: string}> = ({ title }) => {
     const [visible, setVisible] = useState(false);
@@ -24,7 +25,9 @@ const CabinetHeader: React.FC<{title: string}> = ({ title }) => {
         <header className={styles.header}>
             <div className={styles.titleBlock}>
                 <Button icon="pi pi-align-left" onClick={() => setVisible(true)} style={{padding: 5, marginRight: 15}} />
-                <span className={styles.title1}>Главная </span>
+                <Link href={'/cabinet'} className='link'>
+                    <span className={styles.title1}>Кабинет </span>
+                </Link>
                 <span className={styles.title2}> / {title}</span>
             </div>
             <div className={styles.user}>
@@ -47,11 +50,25 @@ const CabinetHeader: React.FC<{title: string}> = ({ title }) => {
 
 
             <Sidebar header={customHeader} visible={visible} onHide={() => setVisible(false)}>
-                <h2>Боковое меню</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                {
+                    menuItems.map((item, idx) => (
+                        <div className={styles.list} key={idx}>
+                            <span className={styles.listTitle}>{item.title}</span>
+
+                            {
+                                item.items.map((subItem, subIdx) => (
+                                    <Link className='link' href={subItem.href} key={subIdx}>
+                                        <span className={styles.listItem}>
+                                            <i className={subItem.ico} style={{marginRight: 10}}></i>
+                                            {subItem.title}
+                                        </span>
+                                    </Link>
+                                ))
+                            }
+                        </div>
+                    ))
+                }
+                
             </Sidebar>
         </header>
     );

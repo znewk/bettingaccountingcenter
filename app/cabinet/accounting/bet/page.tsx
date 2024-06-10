@@ -1,24 +1,26 @@
 import React from 'react';
 import { Metadata } from 'next';
-import CabinetLayout from './CabinetLayout';
+import CabinetLayout from '../../CabinetLayout';
 import PrivateRoute from '@/components/Providers/PrivateRoute';
+import AccountingBet from '@/components/AccountingBet';
 
 export const metadata: Metadata = {
     title: 'Центр учёта ставок',
 };
 const cabinetHeaderProps = {
-    title: 'Главная'
+    title: 'Учёт ставок'
 };
 
-const Cabinet: React.FC = () => {
+const AccountingBetPage: React.FC = () => {
     return (
         <PrivateRoute requiredRoles={['admin', 'manager']}>
             <CabinetLayout cabinetHeaderProps={cabinetHeaderProps}>
                 <div>
+                    <AccountingBet/>
                 </div>
             </CabinetLayout>
         </PrivateRoute>
     );
 }
 
-export default Cabinet;
+export default AccountingBetPage;

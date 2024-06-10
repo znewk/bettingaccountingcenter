@@ -1,0 +1,20 @@
+.tableBody{
+    border: 1px solid #DBDADE;
+    padding: 10px 0 0 0 ;
+    border-radius: 15px;
+}
+
+.filters{
+    border: 1px solid #DBDADE;
+    padding: 10px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button{
+    margin-right: 10px;
+}

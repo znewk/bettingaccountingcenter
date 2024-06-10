@@ -1,3 +1,4 @@
+import { store } from '@/store/store';
 import axios from 'axios';
 
 const instance = axios.create({
@@ -12,10 +13,10 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    // const token = store.getState().user.token; // Пример получения токена из Redux store
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+    const token = store.getState().user.token; // Пример получения токена из Redux store
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {

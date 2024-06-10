@@ -45,10 +45,21 @@ export const login = (creds: LoginPayload) => async (dispatch: Dispatch<any>) =>
       roles: ['admin']
     };
     dispatch(setUserData(userData));
+    localStorage.setItem('userData', JSON.stringify(userData));
   } catch (error) {
     console.error('Ошибка входа:', error);
     dispatch(logout());
   }
 };
+
+export const initialize = () => (dispatch: Dispatch<any>) => {
+  const userData = localStorage.getItem('userData');
+    if (userData) {
+      const parsedUserData = JSON.parse(userData);
+      dispatch(setUserData(parsedUserData))
+    } else {
+      console.log('user not found')
+    }
+}
 
 export default userSlice.reducer;

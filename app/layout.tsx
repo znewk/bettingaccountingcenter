@@ -1,5 +1,7 @@
+'use client'
+
 import React, { ReactNode } from 'react';
-import ReduxProvider from '../store/Provider'; // Измените путь в зависимости от вашей структуры
+import ReduxProvider from '../components/Providers/ReduxProvider'; // Измените путь в зависимости от вашей структуры
 import '../styles/globals.css'; // Импорт глобальных стилей
 
 interface LayoutProps {

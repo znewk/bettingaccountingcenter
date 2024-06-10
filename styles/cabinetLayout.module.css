@@ -3,4 +3,7 @@
 
     width: 100%;
     min-height: 100vh;
+    padding: 30px 5%;
+    padding-top: 100px;
+    box-sizing: border-box;
 }

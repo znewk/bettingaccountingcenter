@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import CabinetHeader  from '@/components/CabinetHeader';
-import ReduxProvider from '../../store/Provider'; // Измените путь в зависимости от вашей структуры
+import ReduxProvider from '../../components/Providers/ReduxProvider'; // Измените путь в зависимости от вашей структуры
 import '../../styles/globals.css'; // Импорт глобальных стилей
 import styles from '../../styles/cabinetLayout.module.css'
 
