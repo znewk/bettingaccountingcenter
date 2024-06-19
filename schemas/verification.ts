@@ -6,3 +6,9 @@ export interface VerifyPayload {
 export interface VerifyResponse {
     data: any
 }
+
+export interface ScoringData {
+    message: string,
+    success: boolean,
+    returnUrl: string
+}
