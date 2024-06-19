@@ -1,7 +1,9 @@
 import AccountingApi from "./AccountingApi";
-import UserApi from "./userApi";
+import VerificationApi from "./VerificationApi";
+import UserApi from "./UserApi";
 
 export const api = {
   userApi: UserApi,
-  accountingApi: AccountingApi
+  accountingApi: AccountingApi,
+  verificationApi: VerificationApi
 };

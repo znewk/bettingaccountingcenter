@@ -1,9 +1,15 @@
-import { store } from '@/store/store';
-import axios from 'axios';
+import { useUserStore } from '@/store/useUserStore';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://locahost:5000/api", // Используем базовый URL из переменных окружения
-  timeout: 1800000, // 30 минут
+// Функция для асинхронного получения токена
+const getToken = async () => {
+  return useUserStore(state => state.token); // Подставьте правильный селектор вашего хранилища
+};
+
+// Создаем интерцепторы с использованием async/await
+const instance: AxiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8181/api",
+  timeout: 1800000,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -12,10 +18,17 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(
-  (config) => {
-    const token = store.getState().user.token; // Пример получения токена из Redux store
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+  async (config: any) => {
+    try {
+      const token = await getToken(); // Асинхронно получаем токен
+      if (token) {
+        config.headers = {
+          ...config.headers,
+          Authorization: `Bearer ${token}`,
+        };
+      }
+    } catch (error) {
+      console.error('Failed to retrieve token:', error);
     }
     return config;
   },
@@ -27,7 +40,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.status === 401) {
+    if (error.response && error.response.status === 401) {
       // Обработка ошибки 401, например, редирект на страницу логина
     }
     return Promise.reject(error);
@@ -35,7 +48,7 @@ instance.interceptors.response.use(
 );
 
 class BaseApi {
-  protected axios = instance;
+  protected axios: AxiosInstance = instance;
 
   constructor() {}
 }

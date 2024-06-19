@@ -54,3 +54,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+.radios{
+    display: flex;
+    align-items: center;
+    
+}

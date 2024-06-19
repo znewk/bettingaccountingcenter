@@ -1,3 +1,4 @@
+import { LoginPayload, UserResponse } from '@/schemas/user';
 import { create } from 'zustand';
 
 interface UserState {
@@ -10,17 +11,6 @@ interface UserState {
   logout: () => void;
   initialize: () => void;
   login: (creds: LoginPayload) => Promise<void>;
-}
-
-export interface UserResponse {
-  token: string;
-  name: string;
-  roles: string[];
-}
-
-export interface LoginPayload {
-  login: string;
-  password: string;
 }
 
 export const useUserStore = create<UserState>((set) => ({
