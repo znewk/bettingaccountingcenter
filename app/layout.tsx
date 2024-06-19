@@ -1,19 +1,25 @@
-'use client'
+"use client"
 
-import React, { ReactNode } from 'react';
-import ReduxProvider from '../components/Providers/ReduxProvider'; // Измените путь в зависимости от вашей структуры
+import React, { useEffect } from 'react';
+import { useUserStore } from '@/store/useUserStore'; // Импортируйте ваш zustand стор
 import '../styles/globals.css'; // Импорт глобальных стилей
 
 interface LayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const RootLayout: React.FC<LayoutProps> = ({ children }) => {
+  const initializeUser = useUserStore(state => state.initialize); // Получаем функцию initialize из zustand стора
+
+  useEffect(() => {
+    initializeUser(); // Вызываем функцию инициализации при загрузке приложения
+  }, []);
+
   return (
     <html>
       <head />
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        {children}
       </body>
     </html>
   );
