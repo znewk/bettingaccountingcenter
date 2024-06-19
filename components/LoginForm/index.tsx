@@ -86,7 +86,11 @@ const LoginForm: React.FC = () => {
                     {errors.password && <small className="p-error">{errors.password.message}</small>}
                 </div>
 
-                
+                <div className={styles.footer}>
+                    <Button type="submit" label="Вход" style={{ width: '45%' }} />
+
+                    <Button type="submit" label="Вход по ЭЦП" style={{ width: '45%' }} />
+                </div>
             </form>
         </div>
     );

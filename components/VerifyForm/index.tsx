@@ -86,7 +86,7 @@ const VerifyForm = () => {
                 </div>
 
                 <div className={styles.footer}>
-                    <Button type="submit" label="Пройти верификацию" className={styles.submitButton} />
+                    <Button type="submit" label="Пройти верификацию" className={styles.submitButton} style={{ width: '100%' }} />
                 </div>
             </form>
         </div>
