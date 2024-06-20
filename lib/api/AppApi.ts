@@ -1,9 +1,9 @@
-import AccountingApi from "./AccountingApi";
-import VerificationApi from "./VerificationApi";
-import UserApi from "./UserApi";
+import * as userActions from './userActions';
+import * as verificationActions from './verificationActions';
+import * as accountingActions from './accountingActions';
 
 export const api = {
-  userApi: UserApi,
-  accountingApi: AccountingApi,
-  verificationApi: VerificationApi
+  userApi: userActions,
+  verificationApi: verificationActions,
+  accountingApi: accountingActions,
 };

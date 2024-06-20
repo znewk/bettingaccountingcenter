@@ -26,7 +26,7 @@ const ScoringForm = () => {
         <div id="container" className={styles.container}>
             <div className={styles.header}>
                 <h1 className={styles.title}>Цент учёта ставок</h1>
-                <span className={styles.subtitle}>Верификация пользователя</span>
+                <span className={styles.subtitle}>Скоринг пользователя</span>
             </div>
 
 
@@ -43,7 +43,7 @@ const ScoringForm = () => {
 
                             <img src={scoringData?.success ? "/success.png" : "/failed.png"} alt="result.icon" className={styles.resultImg}/>
 
-                            <span className={styles.subtitle} style={{marginBottom: 30}}>{scoringData?.message}</span>
+                            <span className={styles.subtitle} style={{marginBottom: 30, fontSize: 14}}>{scoringData?.message}</span>
 
                             <Link href={scoringData?.returnUrl!}>
                                 <Button label="Вернуться на страницу букмекера" style={{ width: '100%' }} />
